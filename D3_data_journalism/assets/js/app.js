@@ -12,7 +12,8 @@ var margin = {
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
-var svg = d3.select("#scatter")
+var svg = d3
+  .select("#scatter")
   .append("svg")
   .attr("width", svgWidth)
   .attr("height", svgHeight);
@@ -21,9 +22,10 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`); 
 
 // load csv data
-d3.csv("/assets/data/data.csv")
+d3.csv("data.csv") //("/assets/data/data.csv")
   .then(function(census_data) {
-  census_data.forEach(function(data) {
+    console.log(census_data);
+    census_data.forEach(function(data) {
         data.poverty = +data.poverty;
         data.healthcare = +data.healthcare;
      });
